@@ -1,4 +1,5 @@
-const BACKEND_ORIGIN = window.APP_CONFIG.BACKEND_ORIGIN;
+// const BACKEND_ORIGIN = window.APP_CONFIG.BACKEND_ORIGIN;
+const BACKEND_ORIGIN = "https://api.galacticode.earth";
 
 // --- 3D Background Animation ---
 const scene = new THREE.Scene();
