@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Asteroid Hunter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  </head>
+  <body class="text-white">
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="container mx-auto p-4 md:p-8 relative z-10">
+      <header class="text-center mb-8">
+        <img
+          src="logo.png"
+          alt="Galacticode Logo"
+          class="mx-auto h-24 w-auto mb-4"
+        />
+        <h1
+          class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 mb-2"
+        >
+          Asteroid Hunter
+        </h1>
+        <p class="text-indigo-200 text-lg">
+          Your portal to the cosmos of small bodies.
+        </p>
+      </header>
+
+      <main>
+        <!-- Search Section -->
+        <div
+          id="search-section"
+          class="glass-effect rounded-2xl p-6 md:p-8 mb-8 shadow-2xl"
+        >
+          <h2 class="text-2xl font-semibold mb-4 text-indigo-300">
+            Search the Near-Earth Object Database
+          </h2>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <input
+              type="text"
+              id="asteroid-id"
+              placeholder="Enter Asteroid SPK-ID (e.g., 2000433 for Eros)"
+              class="flex-grow bg-gray-900/50 border border-indigo-800/50 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition duration-300"
+            />
+            <button
+              id="search-btn"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="mr-2"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+              Search
+            </button>
+          </div>
+          <p class="text-sm text-indigo-300 mt-3">
+            Note: Search now uses the official Asteroid SPK-ID for improved
+            reliability.
+          </p>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-container">
+          <div id="loader" class="hidden justify-center items-center py-10">
+            <div class="loader"></div>
+          </div>
+          <div
+            id="error-message"
+            class="hidden text-center glass-effect rounded-2xl p-8"
+          >
+            <h3 class="text-xl text-red-400">Search Failed</h3>
+            <p id="error-text" class="text-red-300 mt-2"></p>
+          </div>
+          <div
+            id="asteroid-info"
+            class="hidden glass-effect rounded-2xl p-6 md:p-8 shadow-2xl"
+          >
+            <!-- Asteroid info will be dynamically inserted here -->
+          </div>
+        </div>
+
+        <!-- NEO Collision Watch Section -->
+        <div id="neo-section" class="mt-12">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center mb-6"
+          >
+            <h2 class="text-3xl font-bold text-indigo-300">
+              Near-Earth Object Watch
+            </h2>
+            <button
+              id="check-neo-btn"
+              class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 mt-4 md:mt-0"
+            >
+              Show This Week's NEOs
+            </button>
+          </div>
+          <div id="neo-loader" class="hidden justify-center items-center py-10">
+            <div class="loader"></div>
+          </div>
+          <div
+            id="neo-error-message"
+            class="hidden text-center glass-effect rounded-2xl p-8"
+          >
+            <h3 class="text-xl text-red-400">Could not fetch NEOs</h3>
+            <p id="neo-error-text" class="text-red-300 mt-2"></p>
+          </div>
+          <div
+            id="neo-list"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            <!-- NEO cards will be dynamically inserted here -->
+          </div>
+        </div>
+
+        <footer
+          class="text-center mt-12 py-6 border-t border-white/10 text-indigo-300"
+        >
+          <p>Powered by NASA APIs and the Gemini model.</p>
+          <p class="mt-2">
+            Learn more about space innovation at the
+            <a
+              href="https://www.spaceappschallenge.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-semibold text-purple-400 hover:text-purple-300 transition"
+              >NASA International Space Apps Challenge</a
+            >.
+          </p>
+        </footer>
+      </main>
+    </div>
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,49 @@
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0c0a1e;
+}
+.glass-effect {
+  background: rgba(23, 23, 40, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #4f46e5;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+.gemini-loader {
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-left-color: #a855f7; /* purple-500 */
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.stat-value {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #c7d2fe; /* indigo-200 */
+}
+.stat-label {
+  font-size: 0.875rem; /* text-sm */
+  color: #a5b4fc; /* indigo-300 */
+  opacity: 0.8;
+}
